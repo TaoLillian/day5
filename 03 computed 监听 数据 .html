@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <script src="./lib/vue-router-3.0.1.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="firstname" >+
+    <input type="text"  v-model="lastname" >=
+    <input type="text" v-model="fullname" >
+</div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            firstname:'',
+            lastname:'',
+        },
+        methods:{},
+        filters:{},
+        directives:{},
+        watch:{},
+        computed:{ //这是 【计算属性】 在定义时，作为方法定义 ，在使用时 直接 作为属性来调用，不能加 () 。
+            //同样会实现监听的作用。当 定义 fullname
+
+            'fullname': function(){
+                console.log('ok')
+                return this.firstname + ' ' + this.lastname
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

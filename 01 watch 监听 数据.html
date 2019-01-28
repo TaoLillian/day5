@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <script src="./lib/vue-router-3.0.1.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="firstname" >+
+    <input type="text"  v-model="lastname" >=
+    <input type="text" v-model="fullname" >
+</div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            firstname:'',
+            lastname:'',
+            fullname:''
+
+        },
+        methods:{},
+        filters:{},
+        directives:{},
+        //监听文本框的数据改变。
+        watch:{
+            //当名字没有 - 时，可以不用引号，有 - 就要用引号
+            firstname:function(newvalue){
+                //console.log(this.firstname)
+                this.fullname = newvalue + '-' + this.lastname
+            },
+            lastname(newVal){
+                this.fullname = this.firstname + '-' + newVal
+            }
+        }
+    })
+</script>
+</body>
+</html>
